@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dear Dad ❤️</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+font-family:Georgia,serif;
+background:linear-gradient(135deg,#f8f1e7,#fffdf9);
+overflow-x:hidden;
+}
+
+.hero{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+}
+
+.envelope{
+width:260px;
+height:180px;
+position:relative;
+cursor:pointer;
+}
+
+.base{
+position:absolute;
+width:100%;
+height:100%;
+background:#f2d7b5;
+border-radius:10px;
+}
+
+.flap{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#e9c89f;
+clip-path:polygon(0 0,100% 0,50% 60%);
+transform-origin:top;
+transition:1.5s;
+}
+
+.envelope.open .flap{
+transform:rotateX(180deg);
+}
+
+.note{
+margin-top:30px;
+font-size:18px;
+color:#666;
+}
+
+#letterSection{
+display:none;
+min-height:100vh;
+padding:50px 20px;
+}
+
+.letter{
+max-width:900px;
+margin:auto;
+background:white;
+padding:50px;
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,.12);
+animation:fadeUp 1.5s ease;
+}
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(50px)}
+to{opacity:1;transform:translateY(0)}
+}
+
+h1{
+text-align:center;
+margin-bottom:25px;
+}
+
+.content{
+display:grid;
+grid-template-columns:1fr 350px;
+gap:40px;
+align-items:center;
+}
+
+.photo-frame{
+border:3px dashed #ccc;
+height:420px;
+display:flex;
+justify-content:center;
+align-items:center;
+border-radius:20px;
+overflow:hidden;
+background:#fafafa;
+}
+
+.photo-frame img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.placeholder{
+text-align:center;
+padding:20px;
+color:#777;
+}
+
+@media(max-width:768px){
+.content{
+grid-template-columns:1fr;
+}
+.photo-frame{
+height:320px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+<div class="envelope" id="env" onclick="openLetter()">
+<div class="base"></div>
+<div class="flap"></div>
+</div>
+<p class="note">Click to open your Father's Day letter 💌</p>
+</div>
+
+<section id="letterSection">
+<div class="letter">
+
+<h1>Dear Dad ❤️</h1>
+
+<div class="content">
+
+<div>
+<p style="font-size:20px;line-height:1.9;">
+Thank you for every sacrifice, every lesson, every silent prayer,
+and every time you stood beside me when I needed you most.
+
+<br><br>
+
+You have been my guide, my protector, my biggest supporter,
+and the person who taught me what strength and kindness truly mean.
+
+<br><br>
+
+No gift can ever fully express how grateful I am for everything you've done.
+
+<br><br>
+
+Happy Father's Day.
+
+<br><br>
+
+With all my love,<br>
+<b>Ishika ❤️</b>
+</p>
+</div>
+
+<div class="photo-frame">
+
+<!-- REPLACE THIS IMAGE -->
+<img src="your-photo.jpg" alt="Dad and Me">
+
+<!--
+Replace 'your-photo.jpg'
+with any photo filename.
+Example:
+images/dad.jpg
+-->
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+<script>
+function openLetter(){
+document.getElementById('env').classList.add('open');
+
+setTimeout(()=>{
+document.getElementById('letterSection').style.display='block';
+document.getElementById('letterSection').scrollIntoView({
+behavior:'smooth'
+});
+},1200);
+}
+</script>
+
+</body>
+</html>
