@@ -113,12 +113,83 @@ With all our love,<br>
 </div>
 </section>
 
-<section class="final">
-<div class="counter" id="counter">0</div>
-<h2>Reasons Dad Is Amazing</h2>
-<p>No website can truly capture everything you've done for me.</p>
-<h1>Happy Father's Day ❤️</h1>
+<section class="final-screen">
+    <div id="counter" class="counter">1</div>
+
+    <h2>Reasons Dad Is Amazing</h2>
+
+    <div id="finalMessage" class="final-message">
+        <p>
+            No website can truly capture everything you've done for me.
+            <br><br>
+            Happy Father's Day, Dad ❤️
+        </p>
+    </div>
+
+    <canvas id="confetti"></canvas>
 </section>
+  <script>
+.final-screen{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px 20px;
+}
+
+.counter{
+    font-size:90px;
+    font-weight:bold;
+    color:#d46a6a;
+    margin-bottom:20px;
+}
+
+.final-screen h2{
+    margin-bottom:30px;
+}
+
+.final-message{
+    opacity:0;
+    transform:translateY(20px);
+    transition:all 1s ease;
+    font-size:24px;
+    line-height:1.8;
+    max-width:700px;
+}
+
+.final-message.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+#confetti{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+}
+          ctx.clearRect(0,0,canvas.width,canvas.height);
+
+        pieces.forEach(p=>{
+            ctx.beginPath();
+            ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+            ctx.fill();
+
+            p.x += p.dx;
+            p.y += p.dy;
+
+            if(p.y > canvas.height){
+                p.y = -10;
+            }
+        });
+
+        requestAnimationFrame(draw);
+    }
+
+    draw();
+}
 
 </div>
 
