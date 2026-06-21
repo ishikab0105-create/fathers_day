@@ -20,6 +20,68 @@ body{margin:0;font-family:Arial,sans-serif;background:#f7f4ef;color:#333}
 .final{text-align:center;padding:80px 20px}
 .counter{font-size:48px;font-weight:bold}
 button{padding:12px 20px;border:none;border-radius:10px;cursor:pointer}
+    .final-screen{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px 20px;
+}
+
+.counter{
+    font-size:90px;
+    font-weight:bold;
+    color:#d46a6a;
+    margin-bottom:20px;
+}
+
+.final-screen h2{
+    margin-bottom:30px;
+}
+
+.final-message{
+    opacity:0;
+    transform:translateY(20px);
+    transition:all 1s ease;
+    font-size:24px;
+    line-height:1.8;
+    max-width:700px;
+}
+
+.final-message.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+#confetti{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+}
+          ctx.clearRect(0,0,canvas.width,canvas.height);
+
+        pieces.forEach(p=>{
+            ctx.beginPath();
+            ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+            ctx.fill();
+
+            p.x += p.dx;
+            p.y += p.dy;
+
+            if(p.y > canvas.height){
+                p.y = -10;
+            }
+        });
+
+        requestAnimationFrame(draw);
+    }
+
+    draw();
+}
+
 </style>
 </head>
 <body>
@@ -129,67 +191,6 @@ With all our love,<br>
     <canvas id="confetti"></canvas>
 </section>
  
-.final-screen{
-    position:relative;
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:40px 20px;
-}
-
-.counter{
-    font-size:90px;
-    font-weight:bold;
-    color:#d46a6a;
-    margin-bottom:20px;
-}
-
-.final-screen h2{
-    margin-bottom:30px;
-}
-
-.final-message{
-    opacity:0;
-    transform:translateY(20px);
-    transition:all 1s ease;
-    font-size:24px;
-    line-height:1.8;
-    max-width:700px;
-}
-
-.final-message.show{
-    opacity:1;
-    transform:translateY(0);
-}
-
-#confetti{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-}
-          ctx.clearRect(0,0,canvas.width,canvas.height);
-
-        pieces.forEach(p=>{
-            ctx.beginPath();
-            ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-            ctx.fill();
-
-            p.x += p.dx;
-            p.y += p.dy;
-
-            if(p.y > canvas.height){
-                p.y = -10;
-            }
-        });
-
-        requestAnimationFrame(draw);
-    }
-
-    draw();
-}
 
 </div>
 
